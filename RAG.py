@@ -8,16 +8,14 @@ from groq import Groq
 from rouge_score import rouge_scorer
 import string
 
-# Configuro il client Groq con la tua API key
 client = Groq(api_key="######")
 
-# Carica il dataset SQuAD v2
 def load_dataset():
     try:
         from datasets import load_dataset
         dataset = load_dataset('rajpurkar/squad_v2')
         print("Dataset caricato con successo.")
-        return dataset['validation']  # Usa 'validation' per SQuAD v2
+        return dataset['validation']  
     except Exception as e:
         print(f"Errore nel download o nella lettura del dataset: {e}")
         return None
@@ -36,7 +34,6 @@ def filter_non_empty_answers(df, max_rows=300):
 
 # Estrae i contesti unici dal dataset
 def extract_unique_contexts(df, num_contexts=300):
-    # Estrai i contesti unici per evitare duplicati
     contexts = [example['context'] for example in df]
     unique_contexts = list(pd.Series(contexts).drop_duplicates().head(num_contexts))
     return unique_contexts
@@ -120,7 +117,6 @@ def evaluate_model(df, contexts, index, embedding_model):
 
         prompt = create_prompt(question, retrieved_context)
 
-        # Usa il modello per generare la risposta
         model_output = generate_answer(f"{prompt}")
         print(f"Iterazione {num + 1} - Risposta generata: {model_output}")
         print(f"Iterazione {num + 1} - Risposta attesa: {answer}")
