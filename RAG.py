@@ -9,7 +9,7 @@ from rouge_score import rouge_scorer
 import string
 
 # Configuro il client Groq con la tua API key
-client = Groq(api_key="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")
+client = Groq(api_key="######")
 
 # Carica il dataset SQuAD v2
 def load_dataset():
