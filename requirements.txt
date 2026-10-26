@@ -1,0 +1,11 @@
+groq
+pandas
+pyarrow
+huggingface_hub
+fsspec
+datasets
+sentence-transformers
+faiss-cpu
+scikit-learn
+numpy
+rouge-score

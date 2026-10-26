@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import time
@@ -8,7 +9,7 @@ from groq import Groq
 from rouge_score import rouge_scorer
 import string
 
-client = Groq(api_key="######")
+client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
 def load_dataset():
     try:

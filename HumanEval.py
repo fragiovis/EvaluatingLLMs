@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import re
 import math
@@ -6,7 +7,7 @@ from groq import Groq
 
 # Configuro il client Groq
 client = Groq(
-    api_key="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"
+    api_key=os.environ["GROQ_API_KEY"]
 )
 
 # Provo a caricare il dataset

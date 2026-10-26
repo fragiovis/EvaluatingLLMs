@@ -1,10 +1,11 @@
+import os
 import pandas as pd
 from groq import Groq
 import re
 
 # Configuro il client Groq
 client = Groq(
-    api_key="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"
+    api_key=os.environ["GROQ_API_KEY"]
 )
 
 # Provo a caricare il dataset MMLU
